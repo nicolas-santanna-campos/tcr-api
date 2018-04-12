@@ -1,7 +1,10 @@
 language: java
-script:
-  - chmod +x ./gradlew build connectedCheck
+
 before_install:
-  - chmod +x gradlew
+  - chmod +x ./gradlew
+
+after_success:
+  - ./gradlew jacocoTestReport coveralls
+
 jdk:
   - oraclejdk8
