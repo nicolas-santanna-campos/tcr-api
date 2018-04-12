@@ -1,10 +1,10 @@
 language: java
 
-before_install:
-  - chmod +x ./gradlew assemble
-
 install:
   - true
+
+before_install:
+  - chmod +x ./gradlew
 
 jdk:
   - oraclejdk8
