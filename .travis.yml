@@ -6,5 +6,8 @@ install:
 before_install:
   - chmod +x ./gradlew
 
+script: 
+  - ./gradlew check
+
 jdk:
   - oraclejdk8
