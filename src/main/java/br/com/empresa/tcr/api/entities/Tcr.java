@@ -10,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
@@ -85,7 +86,7 @@ public class Tcr implements Serializable {
 		this.cdCooperativa = cdCooperativa;
 	}
 	
-	@Column(name = "id_tesoureiro_ativo", nullable = false)
+	@Column(name = "id_tesoureiro_ativo", nullable = false, length = 1)
 	public Character getIdTesoureiroAtivo() {
 		return idTesoureiroAtivo;
 	}
@@ -124,7 +125,7 @@ public class Tcr implements Serializable {
 		this.dtAlteracao = dtAlteracao;
 	}
 	
-	@Column(name = "id_limite_excedido_autoriza_tesoureiro", nullable = false)
+	@Column(name = "id_limite_excedido_autoriza_tesoureiro", nullable = false, length = 1)
 	public Character getIdLimiteExcedidoAutorizaTesoureiro() {
 		return idLimiteExcedidoAutorizaTesoureiro;
 	}
@@ -133,7 +134,8 @@ public class Tcr implements Serializable {
 		this.idLimiteExcedidoAutorizaTesoureiro = idLimiteExcedidoAutorizaTesoureiro;
 	}
 	
-	@OneToOne(mappedBy = "tcr", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "id", nullable = false)
 	public Suprimento getSuprimento() {
 		return suprimento;
 	}
@@ -142,7 +144,8 @@ public class Tcr implements Serializable {
 		this.suprimento = suprimento;
 	}
 	
-	@OneToOne(mappedBy = "tcr", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "id", nullable = false)
 	public Retirada getRetirada() {
 		return retirada;
 	}
@@ -151,7 +154,8 @@ public class Tcr implements Serializable {
 		this.retirada = retirada;
 	}
 	
-	@OneToOne(mappedBy = "tcr", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "id", nullable = false)
 	public Deposito getDeposito() {
 		return deposito;
 	}
@@ -160,7 +164,8 @@ public class Tcr implements Serializable {
 		this.deposito = deposito;
 	}
 	
-	@OneToOne(mappedBy = "tcr", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "id", nullable = false)
 	public Saque getSaque() {
 		return saque;
 	}

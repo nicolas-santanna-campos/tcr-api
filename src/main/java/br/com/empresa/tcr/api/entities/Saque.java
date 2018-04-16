@@ -49,7 +49,7 @@ public class Saque implements Serializable {
 		this.id = id;
 	}
 	
-	@Column(name = "id_ativo", nullable = false)
+	@Column(name = "id_ativo", nullable = false, length = 1)
 	public Character getIdAtivo() {
 		return idAtivo;
 	}
@@ -58,7 +58,7 @@ public class Saque implements Serializable {
 		this.idAtivo = idAtivo;
 	}
 	
-	@Column(name = "id_exibe_inventario", nullable = false)
+	@Column(name = "id_exibe_inventario", nullable = false, length = 1)
 	public Character getIdExibeInventario() {
 		return idExibeInventario;
 	}
@@ -67,7 +67,7 @@ public class Saque implements Serializable {
 		this.idExibeInventario = idExibeInventario;
 	}
 	
-	@Column(name = "id_balanceamento_cedulas", nullable = false)
+	@Column(name = "id_balanceamento_cedulas", nullable = false, length = 1)
 	public Character getIdBalanceamentoCedulas() {
 		return idBalanceamentoCedulas;
 	}

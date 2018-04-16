@@ -46,7 +46,7 @@ public class Deposito implements Serializable {
 		this.id = id;
 	}
 	
-	@Column(name = "id_ativo", nullable = false)
+	@Column(name = "id_ativo", nullable = false, length = 1)
 	public Character getIdAtivo() {
 		return idAtivo;
 	}
