@@ -40,7 +40,7 @@ public class TcrServiceTest {
 	@Before
 	public void setUp() throws Exception {
 		List<Tcr> list = new ArrayList<Tcr>();
-		list.add(new Tcr());
+		list.add(TcrUtils.obterTcr());
 		
 		BDDMockito.given(this.tcrRepository.findByDsNomeAndCdCooperativa(Mockito.anyString(), Mockito.anyInt())).willReturn(list);
 		BDDMockito.given(this.tcrRepository.findByCdCooperativaAndCdPosto(Mockito.anyInt(), Mockito.anyInt())).willReturn(list);
