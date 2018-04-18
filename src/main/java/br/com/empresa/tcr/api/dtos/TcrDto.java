@@ -69,7 +69,8 @@ public class TcrDto {
 		this.cdCooperativa = cdCooperativa;
 	}
 	
-	@NotEmpty(message = "O identificador de tesoureiro ativo não pode ser nulo")
+	@NotEmpty(message = "O identificador de tesoureiro ativo não pode ser nulo.")
+	@Length(min = 1, max = 1, message = "O identificador de tesoureiro ativo deve conter um caractere (S ou N).")
 	public Character getIdTesoureiroAtivo() {
 		return idTesoureiroAtivo;
 	}
@@ -79,6 +80,7 @@ public class TcrDto {
 	}
 	
 	@NotEmpty(message = "O nome de usuário da alteração não pode ser nulo.")
+	@Length(min = 3, max = 10, message = "O nome do usuário deve conter entre 3 e 10 caracteres.")
 	public String getCdUsuarioAlt() {
 		return cdUsuarioAlt;
 	}
@@ -103,7 +105,8 @@ public class TcrDto {
 		this.dtAlteracao = dtAlteracao;
 	}
 	
-	
+	@NotEmpty(message = "O identificador para caso exceda o limite e necessite de autorização de tesoureiro não pode ser nulo. ")
+	@Length(min = 1, max = 1, message = "O identificador para caso exceda e necessite de autorização de tesoureio deve conter um caractere (S ou N).")
 	public Character getIdLimiteExcedidoAutorizaTesoureiro() {
 		return idLimiteExcedidoAutorizaTesoureiro;
 	}
@@ -143,5 +146,13 @@ public class TcrDto {
 	public void setSaqueDto(SaqueDto saqueDto) {
 		this.saqueDto = saqueDto;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "TcrDto [id=" + id + ", dsNome=" + dsNome + ", cdPosto=" + cdPosto + ", cdCooperativa=" + cdCooperativa
+				+ ", idTesoureiroAtivo=" + idTesoureiroAtivo + ", cdUsuarioAlt=" + cdUsuarioAlt + ", dtInclusao="
+				+ dtInclusao + ", dtAlteracao=" + dtAlteracao + ", idLimiteExcedidoAutorizaTesoureiro="
+				+ idLimiteExcedidoAutorizaTesoureiro + ", suprimentoDto ID=" + suprimentoDto.getId() + ", retiradaDto ID="
+				+ retiradaDto.getId() + ", depositoDto ID=" + depositoDto.getId() + ", saqueDto ID=" + saqueDto.getId() + "]";
+	}	
 }

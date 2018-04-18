@@ -3,6 +3,10 @@ package br.com.empresa.tcr.api.dtos;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
+
 public class SaqueDto {
 
 	private Long 		id;
@@ -27,6 +31,7 @@ public class SaqueDto {
 		this.id = id;
 	}
 
+	@NotEmpty(message = "O identificador de operação ativa para saque não pode ser nulo.")
 	public Character getIdAtivo() {
 		return idAtivo;
 	}
@@ -35,6 +40,7 @@ public class SaqueDto {
 		this.idAtivo = idAtivo;
 	}
 
+	@NotEmpty(message = "O identificador de exibição do inventário para saque não pode ser nulo.")
 	public Character getIdExibeInventario() {
 		return idExibeInventario;
 	}
@@ -43,6 +49,7 @@ public class SaqueDto {
 		this.idExibeInventario = idExibeInventario;
 	}
 
+	@NotEmpty(message = "O identificador de balanceamento de cédulas para saque não pode ser nulo.")
 	public Character getIdBalanceamentoCedulas() {
 		return idBalanceamentoCedulas;
 	}
@@ -51,6 +58,7 @@ public class SaqueDto {
 		this.idBalanceamentoCedulas = idBalanceamentoCedulas;
 	}
 
+	@NotEmpty(message = "O valor máximo diário para a operação de saque não pode ser nulo.")
 	public BigDecimal getVlMaxDiario() {
 		return vlMaxDiario;
 	}
@@ -59,6 +67,7 @@ public class SaqueDto {
 		this.vlMaxDiario = vlMaxDiario;
 	}
 
+	@NotEmpty(message = "O valor máximo da operação para a saque não pode ser nulo.")
 	public BigDecimal getVlMaxOperacao() {
 		return vlMaxOperacao;
 	}
@@ -67,6 +76,8 @@ public class SaqueDto {
 		this.vlMaxOperacao = vlMaxOperacao;
 	}
 
+	@NotEmpty(message = "O nome de usuário da alteração não pode ser nulo.")
+	@Length(min = 3, max = 10, message = "O nome do usuário deve conter entre 3 e 10 caracteres.")
 	public String getCdUsuarioAlt() {
 		return cdUsuarioAlt;
 	}
@@ -89,5 +100,13 @@ public class SaqueDto {
 
 	public void setDtAlteracao(Date dtAlteracao) {
 		this.dtAlteracao = dtAlteracao;
+	}
+
+	@Override
+	public String toString() {
+		return "SaqueDto [id=" + id + ", idAtivo=" + idAtivo + ", idExibeInventario=" + idExibeInventario
+				+ ", idBalanceamentoCedulas=" + idBalanceamentoCedulas + ", vlMaxDiario=" + vlMaxDiario
+				+ ", vlMaxOperacao=" + vlMaxOperacao + ", cdUsuarioAlt=" + cdUsuarioAlt + ", dtInclusao=" + dtInclusao
+				+ ", dtAlteracao=" + dtAlteracao + "]";
 	}
 }

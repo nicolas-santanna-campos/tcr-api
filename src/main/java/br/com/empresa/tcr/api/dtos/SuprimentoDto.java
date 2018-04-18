@@ -3,6 +3,10 @@ package br.com.empresa.tcr.api.dtos;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
+
 public class SuprimentoDto {
 
 	private Long 		id;
@@ -27,6 +31,8 @@ public class SuprimentoDto {
 		this.id = id;
 	}
 
+	@NotEmpty(message = "O identificador de operação ativa para suprimento não pode ser nulo.")
+	@Length(min = 1, max = 1, message = "O identificador de operação ativa para suprimento deve conter um caracter (S ou N).")
 	public Character getIdAtivo() {
 		return idAtivo;
 	}
@@ -35,6 +41,8 @@ public class SuprimentoDto {
 		this.idAtivo = idAtivo;
 	}
 
+	@NotEmpty(message = "O identificador de exibição do inventário para suprimento não pode ser nulo.")
+	@Length(min = 1, max = 1, message = "O identificador de exibição do inventário para suprimento deve conter um caracter (S ou N).")
 	public Character getIdExibeInventario() {
 		return idExibeInventario;
 	}
@@ -43,6 +51,8 @@ public class SuprimentoDto {
 		this.idExibeInventario = idExibeInventario;
 	}
 
+	@NotEmpty(message = "O identificador de balanceamento de cédulas para suprimento não pode ser nulo.")
+	@Length(min = 1, max = 1, message = "O identificador de balanceamento de cédulas para suprimento deve conter um caracter (S ou N).")
 	public Character getIdBalanceamentoCedulas() {
 		return idBalanceamentoCedulas;
 	}
@@ -51,6 +61,7 @@ public class SuprimentoDto {
 		this.idBalanceamentoCedulas = idBalanceamentoCedulas;
 	}
 
+	@NotEmpty(message = "O valor máximo diário para a operação de suprimento não pode ser nulo.")
 	public BigDecimal getVlMaxDiario() {
 		return vlMaxDiario;
 	}
@@ -59,6 +70,7 @@ public class SuprimentoDto {
 		this.vlMaxDiario = vlMaxDiario;
 	}
 
+	@NotEmpty(message = "O valor máximo da operação para a suprimento não pode ser nulo.")
 	public BigDecimal getVlMaxOperacao() {
 		return vlMaxOperacao;
 	}
@@ -67,6 +79,8 @@ public class SuprimentoDto {
 		this.vlMaxOperacao = vlMaxOperacao;
 	}
 
+	@NotEmpty(message = "O nome de usuário da alteração não pode ser nulo.")
+	@Length(min = 3, max = 10, message = "O nome do usuário deve conter entre 3 e 10 caracteres.")
 	public String getCdUsuarioAlt() {
 		return cdUsuarioAlt;
 	}
@@ -89,5 +103,13 @@ public class SuprimentoDto {
 
 	public void setDtAlteracao(Date dtAlteracao) {
 		this.dtAlteracao = dtAlteracao;
+	}
+
+	@Override
+	public String toString() {
+		return "SuprimentoDto [id=" + id + ", idAtivo=" + idAtivo + ", idExibeInventario=" + idExibeInventario
+				+ ", idBalanceamentoCedulas=" + idBalanceamentoCedulas + ", vlMaxDiario=" + vlMaxDiario
+				+ ", vlMaxOperacao=" + vlMaxOperacao + ", cdUsuarioAlt=" + cdUsuarioAlt + ", dtInclusao=" + dtInclusao
+				+ ", dtAlteracao=" + dtAlteracao + "]";
 	}
 }
