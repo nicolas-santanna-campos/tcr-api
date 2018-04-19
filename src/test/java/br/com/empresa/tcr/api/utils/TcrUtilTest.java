@@ -10,7 +10,7 @@ import br.com.empresa.tcr.api.entities.Saque;
 import br.com.empresa.tcr.api.entities.Suprimento;
 import br.com.empresa.tcr.api.entities.Tcr;
 
-public class TcrUtils {
+public class TcrUtilTest {
 
 	private static final Integer    COOPERATIVA 	   = 515;
 	private static final Integer    POSTO 			   = 0;
