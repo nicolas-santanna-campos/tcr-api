@@ -20,7 +20,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import br.com.empresa.tcr.api.entities.Tcr;
 import br.com.empresa.tcr.api.repositories.TcrRepository;
-import br.com.empresa.tcr.api.utils.TcrUtils;
+import br.com.empresa.tcr.api.utils.TcrUtilTest;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -40,7 +40,7 @@ public class TcrServiceTest {
 	@Before
 	public void setUp() throws Exception {
 		List<Tcr> list = new ArrayList<Tcr>();
-		list.add(TcrUtils.obterTcr());
+		list.add(TcrUtilTest.obterTcr());
 		
 		BDDMockito.given(this.tcrRepository.findByDsNomeAndCdCooperativa(Mockito.anyString(), Mockito.anyInt())).willReturn(list);
 		BDDMockito.given(this.tcrRepository.findByCdCooperativaAndCdPosto(Mockito.anyInt(), Mockito.anyInt())).willReturn(list);
@@ -71,7 +71,7 @@ public class TcrServiceTest {
 	
 	@Test
 	public void testPersistirTcr() throws Exception {
-		Tcr tcr = this.tcrService.persistir(TcrUtils.obterTcr());
+		Tcr tcr = this.tcrService.persistir(TcrUtilTest.obterTcr());
 		
 		assertNotNull(tcr);
 	}
