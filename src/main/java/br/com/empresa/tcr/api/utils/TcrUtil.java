@@ -15,6 +15,13 @@ import br.com.empresa.tcr.api.entities.Tcr;
 
 public class TcrUtil {
 
+	/**
+	 * Converte um TcrDto para uma entidade Tcr.
+	 * 
+	 * @param tcrDto
+	 * @return Tcr
+	 * @throws Exception
+	 */
 	public static Tcr obterTcr(TcrDto tcrDto) throws Exception {
 		
 		Date dataincAlt = new Date();
@@ -94,6 +101,13 @@ public class TcrUtil {
 		return suprimento;
 	}
 	
+	/**
+	 * Converte uma entidade Tcr para um TcrDto
+	 * 
+	 * @param tcr
+	 * @return TcrDto
+	 * @throws Exception
+	 */
 	public static TcrDto obterTcrDto(Tcr tcr) throws Exception {
 		
 		DepositoDto   depositoDto   = converterDepositoParaDepositoDto(tcr);
