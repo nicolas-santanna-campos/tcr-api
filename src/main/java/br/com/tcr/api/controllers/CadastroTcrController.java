@@ -63,6 +63,8 @@ public class CadastroTcrController {
 		}
 		
 		this.tcrService.persistir(tcr);
+		response.setData(TcrUtil.obterTcrDto(tcr));
+		
 		return ResponseEntity.ok(response);
 	}
 
