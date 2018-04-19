@@ -21,7 +21,7 @@ import br.com.empresa.tcr.api.entities.Retirada;
 import br.com.empresa.tcr.api.entities.Saque;
 import br.com.empresa.tcr.api.entities.Suprimento;
 import br.com.empresa.tcr.api.entities.Tcr;
-import br.com.empresa.tcr.api.utils.TcrUtils;
+import br.com.empresa.tcr.api.utils.TcrUtilTest;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -38,7 +38,7 @@ public class TcrRepositoryTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		this.tcrRepository.save(TcrUtils.obterTcr());
+		this.tcrRepository.save(TcrUtilTest.obterTcr());
 	}
 	
 	@After
