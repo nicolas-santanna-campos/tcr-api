@@ -165,8 +165,13 @@ public class TcrUtil {
 		SuprimentoDto suprimentoDto = new SuprimentoDto();
 		suprimentoDto.setId(tcr.getSuprimento().getId());
 		suprimentoDto.setIdAtivo(tcr.getSuprimento().getIdAtivo());
-		//suprimentoDto.set
-		
+		suprimentoDto.setIdExibeInventario(tcr.getSuprimento().getIdExibeInventario());
+		suprimentoDto.setIdBalanceamentoCedulas(tcr.getSuprimento().getIdBalanceamentoCedulas());
+		suprimentoDto.setVlMaxDiario(tcr.getSuprimento().getVlMaxDiario());
+		suprimentoDto.setVlMaxOperacao(tcr.getSuprimento().getVlMaxOperacao());
+		suprimentoDto.setCdUsuarioAlt(tcr.getSuprimento().getCdUsuarioAlt());
+		suprimentoDto.setDtInclusao(tcr.getSuprimento().getDtInclusao());
+		suprimentoDto.setDtAlteracao(tcr.getSuprimento().getDtAlteracao());
 		return suprimentoDto;
 	}
 }
