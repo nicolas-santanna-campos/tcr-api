@@ -49,18 +49,19 @@ public class CadastroTcrController {
 	public ResponseEntity<Response<TcrDto>> cadastrar(@Valid @RequestBody TcrDto cadastroTcrDto,
 			BindingResult result) throws Exception, NoSuchAlgorithmException {
 		
-		log.info("Cadastrando TCR: {}", cadastroTcrDto.toString());
+		validarDadosExistentes(cadastroTcrDto, result);
 		
 		Response<TcrDto> response = new Response<TcrDto>();
-		
-		validarDadosExistentes(cadastroTcrDto, result);
-		Tcr tcr = TcrUtil.obterTcr(cadastroTcrDto);
-		
+				
 		if (result.hasErrors()) {
 			log.error("Erro validando dados de cadastro de TCR: {}", result.getAllErrors() );
 			result.getAllErrors().forEach(error -> response.getErrors().add(error.getDefaultMessage()));
 			return ResponseEntity.badRequest().body(response);
 		}
+		
+		log.info("Cadastrando TCR: {}", cadastroTcrDto.toString());
+		
+		Tcr tcr = TcrUtil.obterTcr(cadastroTcrDto);
 		
 		this.tcrService.persistir(tcr);
 		response.setData(TcrUtil.obterTcrDto(tcr));
