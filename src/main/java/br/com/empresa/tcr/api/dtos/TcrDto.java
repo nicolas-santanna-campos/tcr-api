@@ -3,6 +3,7 @@ package br.com.empresa.tcr.api.dtos;
 import java.util.Date;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Length;
 
@@ -17,11 +18,11 @@ public class TcrDto {
 	private String 		  dsNome;
 	private Integer 	  cdPosto;
 	private Integer 	  cdCooperativa;
-	private Character 	  idTesoureiroAtivo;
+	private String 	  idTesoureiroAtivo;
 	private String 		  cdUsuarioAlt;
 	private Date 		  dtInclusao;
 	private Date 		  dtAlteracao;
-	private Character 	  idLimiteExcedidoAutorizaTesoureiro;
+	private String 	  idLimiteExcedidoAutorizaTesoureiro;
 	private SuprimentoDto suprimentoDto;
 	private RetiradaDto   retiradaDto;
 	private DepositoDto   depositoDto;
@@ -49,8 +50,7 @@ public class TcrDto {
 		this.dsNome = dsNome;
 	}
 	
-	@NotEmpty(message = "O posto não pode ser nulo.")
-	@Length(min = 1, max = 4, message = "O posto deve conter entre 1 e 4 dígitos.")
+	@NotNull(message = "O posto não pode ser nulo.")
 	public Integer getCdPosto() {
 		return cdPosto;
 	}
@@ -59,8 +59,7 @@ public class TcrDto {
 		this.cdPosto = cdPosto;
 	}
 	
-	@NotEmpty(message = "A cooperativa não pode ser nula.")
-	@Length(min = 1, max = 4, message = "A cooperativa deve conter entre 1 e 4 dígitos.")
+	@NotNull(message = "A cooperativa não pode ser nula.")
 	public Integer getCdCooperativa() {
 		return cdCooperativa;
 	}
@@ -70,16 +69,18 @@ public class TcrDto {
 	}
 	
 	@NotEmpty(message = "O identificador de tesoureiro ativo não pode ser nulo.")
+	@NotNull(message = "O identificador de tesoureiro ativo não pode ser nulo.")
 	@Length(min = 1, max = 1, message = "O identificador de tesoureiro ativo deve conter um caractere (S ou N).")
-	public Character getIdTesoureiroAtivo() {
+	public String getIdTesoureiroAtivo() {
 		return idTesoureiroAtivo;
 	}
 	
-	public void setIdTesoureiroAtivo(Character idTesoureiroAtivo) {
+	public void setIdTesoureiroAtivo(String idTesoureiroAtivo) {
 		this.idTesoureiroAtivo = idTesoureiroAtivo;
 	}
 	
 	@NotEmpty(message = "O nome de usuário da alteração não pode ser nulo.")
+	@NotNull(message = "O nome de usuário da alteração não pode ser nulo.")
 	@Length(min = 3, max = 10, message = "O nome do usuário deve conter entre 3 e 10 caracteres.")
 	public String getCdUsuarioAlt() {
 		return cdUsuarioAlt;
@@ -106,12 +107,13 @@ public class TcrDto {
 	}
 	
 	@NotEmpty(message = "O identificador para caso exceda o limite e necessite de autorização de tesoureiro não pode ser nulo. ")
+	@NotNull(message = "O identificador para caso exceda o limite e necessite de autorização de tesoureiro não pode ser nulo. ")
 	@Length(min = 1, max = 1, message = "O identificador para caso exceda e necessite de autorização de tesoureio deve conter um caractere (S ou N).")
-	public Character getIdLimiteExcedidoAutorizaTesoureiro() {
+	public String getIdLimiteExcedidoAutorizaTesoureiro() {
 		return idLimiteExcedidoAutorizaTesoureiro;
 	}
 	
-	public void setIdLimiteExcedidoAutorizaTesoureiro(Character idLimiteExcedidoAutorizaTesoureiro) {
+	public void setIdLimiteExcedidoAutorizaTesoureiro(String idLimiteExcedidoAutorizaTesoureiro) {
 		this.idLimiteExcedidoAutorizaTesoureiro = idLimiteExcedidoAutorizaTesoureiro;
 	}
 

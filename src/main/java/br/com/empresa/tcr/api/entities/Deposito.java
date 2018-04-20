@@ -25,7 +25,7 @@ public class Deposito implements Serializable {
 	private static final long serialVersionUID = 2979438716854776687L;
 	
 	private Long 		id;
-	private Character 	idAtivo;
+	private String	 	idAtivo;
 	private BigDecimal  vlMaxDiario;
 	private BigDecimal  vlMaxOperacao;
 	private String 		cdUsuarioAlt;
@@ -47,11 +47,11 @@ public class Deposito implements Serializable {
 	}
 	
 	@Column(name = "id_ativo", nullable = false, length = 1)
-	public Character getIdAtivo() {
+	public String getIdAtivo() {
 		return idAtivo;
 	}
 	
-	public void setIdAtivo(Character idAtivo) {
+	public void setIdAtivo(String idAtivo) {
 		this.idAtivo = idAtivo;
 	}
 	

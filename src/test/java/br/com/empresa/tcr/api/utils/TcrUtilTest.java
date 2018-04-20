@@ -16,8 +16,8 @@ public class TcrUtilTest {
 	private static final Integer    POSTO 			   = 0;
 	private static final String     NOME_TESOUREIRO    = "teste";
 	private static final String     USUARIO		 	   = "teste";
-	private static final Character  NAO			 	   = 'N';
-	private static final Character  SIM			 	   = 'S';
+	private static final String     NAO			 	   = "N";
+	private static final String     SIM			 	   = "S";
 	private static final BigDecimal VALOR_MAX_DIARIO   = new BigDecimal(100);
 	private static final BigDecimal VALOR_MAX_OPERACAO = new BigDecimal(100);
 	private static final Date 		DATA			   = new Date();

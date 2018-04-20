@@ -10,9 +10,9 @@ import org.hibernate.validator.constraints.Length;
 public class SuprimentoDto {
 
 	private Long 		id;
-	private Character 	idAtivo;
-	private Character   idExibeInventario;
-	private Character   idBalanceamentoCedulas;
+	private String 	idAtivo;
+	private String   idExibeInventario;
+	private String   idBalanceamentoCedulas;
 	private BigDecimal	vlMaxDiario;
 	private BigDecimal  vlMaxOperacao;
 	private String 		cdUsuarioAlt;
@@ -33,31 +33,31 @@ public class SuprimentoDto {
 
 	@NotEmpty(message = "O identificador de operação ativa para suprimento não pode ser nulo.")
 	@Length(min = 1, max = 1, message = "O identificador de operação ativa para suprimento deve conter um caracter (S ou N).")
-	public Character getIdAtivo() {
+	public String getIdAtivo() {
 		return idAtivo;
 	}
 
-	public void setIdAtivo(Character idAtivo) {
+	public void setIdAtivo(String idAtivo) {
 		this.idAtivo = idAtivo;
 	}
 
 	@NotEmpty(message = "O identificador de exibição do inventário para suprimento não pode ser nulo.")
 	@Length(min = 1, max = 1, message = "O identificador de exibição do inventário para suprimento deve conter um caracter (S ou N).")
-	public Character getIdExibeInventario() {
+	public String getIdExibeInventario() {
 		return idExibeInventario;
 	}
 
-	public void setIdExibeInventario(Character idExibeInventario) {
+	public void setIdExibeInventario(String idExibeInventario) {
 		this.idExibeInventario = idExibeInventario;
 	}
 
 	@NotEmpty(message = "O identificador de balanceamento de cédulas para suprimento não pode ser nulo.")
 	@Length(min = 1, max = 1, message = "O identificador de balanceamento de cédulas para suprimento deve conter um caracter (S ou N).")
-	public Character getIdBalanceamentoCedulas() {
+	public String getIdBalanceamentoCedulas() {
 		return idBalanceamentoCedulas;
 	}
 
-	public void setIdBalanceamentoCedulas(Character idBalanceamentoCedulas) {
+	public void setIdBalanceamentoCedulas(String idBalanceamentoCedulas) {
 		this.idBalanceamentoCedulas = idBalanceamentoCedulas;
 	}
 

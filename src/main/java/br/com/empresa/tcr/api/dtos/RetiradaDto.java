@@ -10,7 +10,7 @@ import org.hibernate.validator.constraints.Length;
 public class RetiradaDto {
 
 	private Long 		id;
-	private Character 	idAtivo;
+	private String 	idAtivo;
 	private BigDecimal  vlMaxDiario;
 	private BigDecimal  vlMaxOperacao;
 	private String 		cdUsuarioAlt;
@@ -31,11 +31,11 @@ public class RetiradaDto {
 
 	@NotEmpty(message = "O identificador de operação ativa para retirada não pode ser nulo.")
 	@Length(min = 1, max = 1, message = "O identificador de operação ativa para retirada deve conter um caracter (S ou N).")
-	public Character getIdAtivo() {
+	public String getIdAtivo() {
 		return idAtivo;
 	}
 
-	public void setIdAtivo(Character idAtivo) {
+	public void setIdAtivo(String idAtivo) {
 		this.idAtivo = idAtivo;
 	}
 

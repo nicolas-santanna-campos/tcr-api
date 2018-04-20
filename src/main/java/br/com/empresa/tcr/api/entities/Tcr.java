@@ -31,11 +31,11 @@ public class Tcr implements Serializable {
 	private String 		dsNome;
 	private Integer 	cdPosto;
 	private Integer 	cdCooperativa;
-	private Character 	idTesoureiroAtivo;
+	private String 	idTesoureiroAtivo;
 	private String 		cdUsuarioAlt;
 	private Date 		dtInclusao;
 	private Date 		dtAlteracao;
-	private Character 	idLimiteExcedidoAutorizaTesoureiro;
+	private String 	idLimiteExcedidoAutorizaTesoureiro;
 	private Suprimento  suprimento;
 	private Retirada 	retirada;
 	private Deposito 	deposito;
@@ -68,6 +68,7 @@ public class Tcr implements Serializable {
 		this.dsNome = dsNome;
 	}
 	
+	@NotNull(message = "O posto é obrigatório.")
 	@Column(name = "cd_posto", nullable = false)
 	public Integer getCdPosto() {
 		return cdPosto;
@@ -77,6 +78,7 @@ public class Tcr implements Serializable {
 		this.cdPosto = cdPosto;
 	}
 	
+	@NotNull(message = "A cooperativa é obrigatório.")
 	@Column(name = "cd_coop", nullable = false)
 	public Integer getCdCooperativa() {
 		return cdCooperativa;
@@ -87,11 +89,11 @@ public class Tcr implements Serializable {
 	}
 	
 	@Column(name = "id_tesoureiro_ativo", nullable = false, length = 1)
-	public Character getIdTesoureiroAtivo() {
+	public String getIdTesoureiroAtivo() {
 		return idTesoureiroAtivo;
 	}
 	
-	public void setIdTesoureiroAtivo(Character idTesoureiroAtivo) {
+	public void setIdTesoureiroAtivo(String idTesoureiroAtivo) {
 		this.idTesoureiroAtivo = idTesoureiroAtivo;
 	}
 	
@@ -126,11 +128,11 @@ public class Tcr implements Serializable {
 	}
 	
 	@Column(name = "id_limite_excedido_autoriza_tesoureiro", nullable = false, length = 1)
-	public Character getIdLimiteExcedidoAutorizaTesoureiro() {
+	public String getIdLimiteExcedidoAutorizaTesoureiro() {
 		return idLimiteExcedidoAutorizaTesoureiro;
 	}
 	
-	public void setIdLimiteExcedidoAutorizaTesoureiro(Character idLimiteExcedidoAutorizaTesoureiro) {
+	public void setIdLimiteExcedidoAutorizaTesoureiro(String idLimiteExcedidoAutorizaTesoureiro) {
 		this.idLimiteExcedidoAutorizaTesoureiro = idLimiteExcedidoAutorizaTesoureiro;
 	}
 	

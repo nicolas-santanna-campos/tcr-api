@@ -1,4 +1,4 @@
-package br.com.tcr.api.controllers;
+package br.com.empresa.tcr.api.controllers;
 
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
