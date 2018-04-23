@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.empresa.tcr.api.dtos.CadastroTcrDto;
 import br.com.empresa.tcr.api.dtos.TcrDto;
 import br.com.empresa.tcr.api.entities.Tcr;
 import br.com.empresa.tcr.api.response.Response;
@@ -50,10 +51,10 @@ public class TcrController {
 	 * @throws Exception, NoSuchAlgorithmException 
 	 */
 	@PostMapping
-	public ResponseEntity<Response<TcrDto>> cadastrar(@Valid @RequestBody TcrDto tcrDto,
+	public ResponseEntity<Response<TcrDto>> cadastrar(@Valid @RequestBody CadastroTcrDto cadastroTcrDto,
 			BindingResult result) throws Exception, NoSuchAlgorithmException {
 		
-		validarDadosExistentes(tcrDto, result);
+		validarDadosExistentes(cadastroTcrDto, result);
 		
 		Response<TcrDto> response = new Response<TcrDto>();
 				
@@ -63,9 +64,9 @@ public class TcrController {
 			return ResponseEntity.badRequest().body(response);
 		}
 		
-		log.info("Cadastrando TCR: {}", tcrDto.toString());
+		log.info("Cadastrando TCR: {}", cadastroTcrDto.toString());
 		
-		Tcr tcr = TcrUtil.converterTcr(tcrDto);
+		Tcr tcr = TcrUtil.converterTcr(cadastroTcrDto);
 		
 		this.tcrService.persistir(tcr);
 		response.setData(TcrUtil.converterTcrDto(tcr));
@@ -82,7 +83,7 @@ public class TcrController {
 	    
 	    if(!tcr.isPresent()) {
 	    	log.info("Tcr não encontrado para o ID: {}", id);
-	    	response.getErrors().add("Tcr não encontrado para o ID" + id);
+	    	response.getErrors().add("Tcr não encontrado para o ID: " + id);
 	    	return ResponseEntity.badRequest().body(response);
 	    }
 	    
@@ -123,7 +124,7 @@ public class TcrController {
 	 * @param cadastroTcrDto
 	 * @param result
 	 */
-	private void validarDadosExistentes(TcrDto cadastroTcrDto, BindingResult result) {
+	private void validarDadosExistentes(CadastroTcrDto cadastroTcrDto, BindingResult result) {
 		List<Tcr> tcrList = this.tcrService.buscarPorNomeCooperativaEPosto(cadastroTcrDto.getDsNome(), 
 													   cadastroTcrDto.getCdCooperativa(),
 													   cadastroTcrDto.getCdPosto());
