@@ -1,6 +1,7 @@
 package br.com.empresa.tcr.api.repositories;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,4 +16,6 @@ public interface TcrRepository extends JpaRepository<Tcr, Long> {
 	List<Tcr> findByCdCooperativaAndCdPosto(Integer cdCooperativa, Integer cdPosto);
 	
 	List<Tcr> findByDsNomeAndCdCooperativaAndCdPosto(String dsNome, Integer cdCooperativa, Integer cdPosto);
+	
+	Optional<Tcr> findById(Long id);
 }

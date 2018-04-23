@@ -1,6 +1,7 @@
 package br.com.empresa.tcr.api.services.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,6 +38,12 @@ public class TcrServiceImpl implements TcrService {
 		log.info("Buscando lista de Tcrs para nome: {}, cooperativa: {}, posto: {}", nome, cooperativa, posto);
 		return tcrRepository.findByDsNomeAndCdCooperativaAndCdPosto(nome, cooperativa, posto);
 	}
+	
+	@Override
+	public Optional<Tcr> buscarPorId(Long id) {
+		log.info("Buscando TCR com ID: {}", id);
+		return tcrRepository.findById(id);
+	}
 
 	@Override
 	public Tcr persistir(Tcr tcr) {
@@ -48,6 +55,5 @@ public class TcrServiceImpl implements TcrService {
 	public void remover(Long id) {
 		log.info("Removendo um tcr com id: {}", id);
 		this.tcrRepository.deleteById(id);
-	}
-	
+	}	
 }

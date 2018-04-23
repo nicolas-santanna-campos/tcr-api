@@ -1,6 +1,7 @@
 package br.com.empresa.tcr.api.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import br.com.empresa.tcr.api.entities.Tcr;
 
@@ -33,6 +34,14 @@ public interface TcrService {
 	 * @return List<Optional<Tcr>>
 	 */
 	List<Tcr> buscarPorNomeCooperativaEPosto(String nome, Integer cooperativa, Integer posto);
+	
+	/**
+	 * Retorna um TCR por ID
+	 * 
+	 * @param id
+	 * @return
+	 */
+	Optional<Tcr> buscarPorId(Long id);
 	
 	/**
 	 * Cadastra um novo Tcr na base de dados
