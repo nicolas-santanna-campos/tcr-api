@@ -2,6 +2,7 @@ package br.com.empresa.tcr.api.utils;
 
 import java.util.Date;
 
+import br.com.empresa.tcr.api.dtos.CadastroTcrDto;
 import br.com.empresa.tcr.api.dtos.DepositoDto;
 import br.com.empresa.tcr.api.dtos.RetiradaDto;
 import br.com.empresa.tcr.api.dtos.SaqueDto;
@@ -16,7 +17,7 @@ import br.com.empresa.tcr.api.entities.Tcr;
 public class TcrUtil {
 
 	/**
-	 * Converte um TcrDto para uma entidade Tcr.
+	 * Converte um {@link TcrDto} para uma entidade {@link Tcr}.
 	 * 
 	 * @param tcrDto
 	 * @return Tcr
@@ -85,7 +86,75 @@ public class TcrUtil {
 	}
 	
 	/**
-	 * Converte uma entidade Tcr para um TcrDto
+	 * Converte um {@link TcrDto} para uma entidade {@link Tcr} .
+	 * 
+	 * @param cadastroTcrDto
+	 * @return {@link Tcr}
+	 * @throws Exception
+	 */
+	public static Tcr converterTcr(CadastroTcrDto cadastroTcrDto) throws Exception {
+		Date dataincAlt = new Date();
+		
+		Deposito   deposito   = converterCadastroDepositoDtoParaDeposito(cadastroTcrDto, dataincAlt);
+		Retirada   retirada   = converterCadastroRetiradaDtoParaRetirada(cadastroTcrDto, dataincAlt);
+		Saque 	   saque 	  = converterCadastroSaqueDtoParaSaque(cadastroTcrDto, dataincAlt);
+		Suprimento suprimento = converterCadastroSuprimentoDtoParaSuprimento(cadastroTcrDto, dataincAlt);
+		
+		Tcr tcr = new Tcr();
+		
+		tcr.setDsNome(cadastroTcrDto.getDsNome());
+		tcr.setCdPosto(cadastroTcrDto.getCdPosto());
+		tcr.setCdCooperativa(cadastroTcrDto.getCdCooperativa());
+		tcr.setIdTesoureiroAtivo(cadastroTcrDto.getIdTesoureiroAtivo());
+		tcr.setCdUsuarioAlt(cadastroTcrDto.getCdUsuarioAlt());
+		tcr.setDtInclusao(dataincAlt);
+		tcr.setDtAlteracao(dataincAlt);
+		tcr.setIdLimiteExcedidoAutorizaTesoureiro(cadastroTcrDto.getIdLimiteExcedidoAutorizaTesoureiro());
+		tcr.setDeposito(deposito);
+		tcr.setRetirada(retirada);
+		tcr.setSaque(saque);
+		tcr.setSuprimento(suprimento);
+		return tcr;
+	}
+	
+	private static Deposito converterCadastroDepositoDtoParaDeposito(CadastroTcrDto cadastroTcrDto, Date data) throws Exception {
+		Deposito   deposito   = new Deposito();
+		deposito.setIdAtivo(cadastroTcrDto.getCadastroDepositoDto().getIdAtivo());
+		deposito.setVlMaxDiario(cadastroTcrDto.getCadastroDepositoDto().getVlMaxDiario());
+		deposito.setVlMaxOperacao(cadastroTcrDto.getCadastroDepositoDto().getVlMaxOperacao());
+		return deposito;
+	}
+	
+	private static Retirada converterCadastroRetiradaDtoParaRetirada(CadastroTcrDto cadastroTcrDto, Date data) throws Exception {
+		Retirada   retirada   = new Retirada();
+		retirada.setIdAtivo(cadastroTcrDto.getCadastroRetiradaDto().getIdAtivo());
+		retirada.setVlMaxDiario(cadastroTcrDto.getCadastroRetiradaDto().getVlMaxDiario());
+		retirada.setVlMaxOperacao(cadastroTcrDto.getCadastroRetiradaDto().getVlMaxOperacao());
+		return retirada;
+	}
+	
+	private static Saque converterCadastroSaqueDtoParaSaque(CadastroTcrDto cadastroTcrDto, Date data) throws Exception  {
+		Saque saque = new Saque();
+		saque.setIdAtivo(cadastroTcrDto.getCadastroSaqueDto().getIdAtivo());
+		saque.setVlMaxDiario(cadastroTcrDto.getCadastroSaqueDto().getVlMaxDiario());
+		saque.setVlMaxOperacao(cadastroTcrDto.getCadastroSaqueDto().getVlMaxOperacao());
+		saque.setIdExibeInventario(cadastroTcrDto.getCadastroSaqueDto().getIdExibeInventario());
+		saque.setIdBalanceamentoCedulas(cadastroTcrDto.getCadastroSaqueDto().getIdBalanceamentoCedulas());
+		return saque;
+	}
+	
+	private static Suprimento converterCadastroSuprimentoDtoParaSuprimento(CadastroTcrDto cadastroTcrDto, Date data) throws Exception {
+		Suprimento suprimento = new Suprimento();
+		suprimento.setIdAtivo(cadastroTcrDto.getCadastroSuprimentoDto().getIdAtivo());
+		suprimento.setVlMaxDiario(cadastroTcrDto.getCadastroSuprimentoDto().getVlMaxDiario());
+		suprimento.setVlMaxOperacao(cadastroTcrDto.getCadastroSuprimentoDto().getVlMaxOperacao());
+		suprimento.setIdExibeInventario(cadastroTcrDto.getCadastroSuprimentoDto().getIdExibeInventario());
+		suprimento.setIdBalanceamentoCedulas(cadastroTcrDto.getCadastroSuprimentoDto().getIdBalanceamentoCedulas());
+		return suprimento;
+	}
+	
+	/**
+	 * Converte uma entidade {@link Tcr} para um {@link TcrDto}.
 	 * 
 	 * @param tcr
 	 * @return TcrDto
@@ -155,4 +224,5 @@ public class TcrUtil {
 		suprimentoDto.setVlMaxOperacao(tcr.getSuprimento().getVlMaxOperacao());
 		return suprimentoDto;
 	}
+	
 }
