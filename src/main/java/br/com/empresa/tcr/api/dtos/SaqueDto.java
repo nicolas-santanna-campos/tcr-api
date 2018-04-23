@@ -1,24 +1,18 @@
 package br.com.empresa.tcr.api.dtos;
 
 import java.math.BigDecimal;
-import java.util.Date;
 
 import javax.validation.constraints.NotEmpty;
-
-import org.hibernate.validator.constraints.Length;
 
 public class SaqueDto {
 
 	private Long 		id;
-	private String 	idAtivo;
-	private String   idExibeInventario;
-	private String   idBalanceamentoCedulas;
+	private String 		idAtivo;
+	private String   	idExibeInventario;
+	private String   	idBalanceamentoCedulas;
 	private BigDecimal	vlMaxDiario;
 	private BigDecimal  vlMaxOperacao;
-	private String 		cdUsuarioAlt;
-	private Date 		dtInclusao;
-	private Date 		dtAlteracao;
-	
+
 	public SaqueDto() {
 		
 	}
@@ -76,37 +70,10 @@ public class SaqueDto {
 		this.vlMaxOperacao = vlMaxOperacao;
 	}
 
-	@NotEmpty(message = "O nome de usuário da alteração não pode ser nulo.")
-	@Length(min = 3, max = 10, message = "O nome do usuário deve conter entre 3 e 10 caracteres.")
-	public String getCdUsuarioAlt() {
-		return cdUsuarioAlt;
-	}
-
-	public void setCdUsuarioAlt(String cdUsuarioAlt) {
-		this.cdUsuarioAlt = cdUsuarioAlt;
-	}
-
-	public Date getDtInclusao() {
-		return dtInclusao;
-	}
-
-	public void setDtInclusao(Date dtInclusao) {
-		this.dtInclusao = dtInclusao;
-	}
-
-	public Date getDtAlteracao() {
-		return dtAlteracao;
-	}
-
-	public void setDtAlteracao(Date dtAlteracao) {
-		this.dtAlteracao = dtAlteracao;
-	}
-
 	@Override
 	public String toString() {
 		return "SaqueDto [id=" + id + ", idAtivo=" + idAtivo + ", idExibeInventario=" + idExibeInventario
 				+ ", idBalanceamentoCedulas=" + idBalanceamentoCedulas + ", vlMaxDiario=" + vlMaxDiario
-				+ ", vlMaxOperacao=" + vlMaxOperacao + ", cdUsuarioAlt=" + cdUsuarioAlt + ", dtInclusao=" + dtInclusao
-				+ ", dtAlteracao=" + dtAlteracao + "]";
+				+ ", vlMaxOperacao=" + vlMaxOperacao + "]";
 	}
 }

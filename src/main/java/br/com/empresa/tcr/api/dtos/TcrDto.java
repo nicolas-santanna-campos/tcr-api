@@ -18,11 +18,11 @@ public class TcrDto {
 	private String 		  dsNome;
 	private Integer 	  cdPosto;
 	private Integer 	  cdCooperativa;
-	private String 	  idTesoureiroAtivo;
+	private String 	  	  idTesoureiroAtivo;
 	private String 		  cdUsuarioAlt;
 	private Date 		  dtInclusao;
 	private Date 		  dtAlteracao;
-	private String 	  idLimiteExcedidoAutorizaTesoureiro;
+	private String 	  	  idLimiteExcedidoAutorizaTesoureiro;
 	private SuprimentoDto suprimentoDto;
 	private RetiradaDto   retiradaDto;
 	private DepositoDto   depositoDto;
