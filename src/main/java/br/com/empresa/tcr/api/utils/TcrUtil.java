@@ -22,7 +22,7 @@ public class TcrUtil {
 	 * @return Tcr
 	 * @throws Exception
 	 */
-	public static Tcr obterTcr(TcrDto tcrDto) throws Exception {
+	public static Tcr converterTcr(TcrDto tcrDto) throws Exception {
 		
 		Date dataincAlt = new Date();
 		
@@ -45,7 +45,6 @@ public class TcrUtil {
 		tcr.setRetirada(retirada);
 		tcr.setSaque(saque);
 		tcr.setSuprimento(suprimento);
-		
 		return tcr;
 	}
 	
@@ -54,10 +53,6 @@ public class TcrUtil {
 		deposito.setIdAtivo(tcrDto.getDepositoDto().getIdAtivo());
 		deposito.setVlMaxDiario(tcrDto.getDepositoDto().getVlMaxDiario());
 		deposito.setVlMaxOperacao(tcrDto.getDepositoDto().getVlMaxOperacao());
-		deposito.setCdUsuarioAlt(tcrDto.getDepositoDto().getCdUsuarioAlt());
-		deposito.setDtInclusao(data);
-		deposito.setDtAlteracao(data);
-		
 		return deposito;
 	}
 	
@@ -66,10 +61,6 @@ public class TcrUtil {
 		retirada.setIdAtivo(tcrDto.getRetiradaDto().getIdAtivo());
 		retirada.setVlMaxDiario(tcrDto.getRetiradaDto().getVlMaxDiario());
 		retirada.setVlMaxOperacao(tcrDto.getRetiradaDto().getVlMaxOperacao());
-		retirada.setCdUsuarioAlt(tcrDto.getRetiradaDto().getCdUsuarioAlt());
-		retirada.setDtInclusao(data);
-		retirada.setDtAlteracao(data);
-		
 		return retirada;
 	}
 	
@@ -80,10 +71,6 @@ public class TcrUtil {
 		saque.setVlMaxOperacao(tcrDto.getSaqueDto().getVlMaxOperacao());
 		saque.setIdExibeInventario(tcrDto.getSaqueDto().getIdExibeInventario());
 		saque.setIdBalanceamentoCedulas(tcrDto.getSaqueDto().getIdBalanceamentoCedulas());
-		saque.setCdUsuarioAlt(tcrDto.getSaqueDto().getCdUsuarioAlt());
-		saque.setDtInclusao(data);
-		saque.setDtAlteracao(data);
-		
 		return saque;
 	}
 	
@@ -94,10 +81,6 @@ public class TcrUtil {
 		suprimento.setVlMaxOperacao(tcrDto.getSuprimentoDto().getVlMaxOperacao());
 		suprimento.setIdExibeInventario(tcrDto.getSuprimentoDto().getIdExibeInventario());
 		suprimento.setIdBalanceamentoCedulas(tcrDto.getSuprimentoDto().getIdBalanceamentoCedulas());
-		suprimento.setCdUsuarioAlt(tcrDto.getSuprimentoDto().getCdUsuarioAlt());
-		suprimento.setDtInclusao(data);
-		suprimento.setDtAlteracao(data);
-		
 		return suprimento;
 	}
 	
@@ -108,7 +91,7 @@ public class TcrUtil {
 	 * @return TcrDto
 	 * @throws Exception
 	 */
-	public static TcrDto obterTcrDto(Tcr tcr) throws Exception {
+	public static TcrDto converterTcrDto(Tcr tcr) throws Exception {
 		
 		DepositoDto   depositoDto   = converterDepositoParaDepositoDto(tcr);
 		RetiradaDto   retiradaDto   = converterRetiradaParaRetiradaDto(tcr);
@@ -130,7 +113,6 @@ public class TcrUtil {
 		tcrDto.setRetiradaDto(retiradaDto);
 		tcrDto.setDepositoDto(depositoDto);
 		tcrDto.setSaqueDto(saqueDto);
-		
 		return tcrDto;
 	}
 
@@ -140,10 +122,6 @@ public class TcrUtil {
 		depositoDto.setIdAtivo(tcr.getDeposito().getIdAtivo());
 		depositoDto.setVlMaxDiario(tcr.getDeposito().getVlMaxDiario());
 		depositoDto.setVlMaxOperacao(tcr.getDeposito().getVlMaxOperacao());
-		depositoDto.setCdUsuarioAlt(tcr.getDeposito().getCdUsuarioAlt());
-		depositoDto.setDtInclusao(tcr.getDeposito().getDtInclusao());
-		depositoDto.setDtAlteracao(tcr.getDeposito().getDtAlteracao());
-		
 		return depositoDto;
 	}
 	
@@ -153,10 +131,6 @@ public class TcrUtil {
 		retiradaDto.setIdAtivo(tcr.getRetirada().getIdAtivo());
 		retiradaDto.setVlMaxDiario(tcr.getRetirada().getVlMaxDiario());
 		retiradaDto.setVlMaxOperacao(tcr.getRetirada().getVlMaxOperacao());
-		retiradaDto.setCdUsuarioAlt(tcr.getRetirada().getCdUsuarioAlt());
-		retiradaDto.setDtInclusao(tcr.getRetirada().getDtInclusao());
-		retiradaDto.setDtAlteracao(tcr.getRetirada().getDtAlteracao());
-		
 		return retiradaDto;
 	}
 
@@ -168,10 +142,6 @@ public class TcrUtil {
 		saqueDto.setIdBalanceamentoCedulas(tcr.getSaque().getIdBalanceamentoCedulas());
 		saqueDto.setVlMaxDiario(tcr.getSaque().getVlMaxDiario());
 		saqueDto.setVlMaxOperacao(tcr.getSaque().getVlMaxOperacao());
-		saqueDto.setCdUsuarioAlt(tcr.getSaque().getCdUsuarioAlt());
-		saqueDto.setDtInclusao(tcr.getSaque().getDtInclusao());
-		saqueDto.setDtAlteracao(tcr.getSaque().getDtAlteracao());
-		
 		return saqueDto;
 	}
 	
@@ -183,9 +153,6 @@ public class TcrUtil {
 		suprimentoDto.setIdBalanceamentoCedulas(tcr.getSuprimento().getIdBalanceamentoCedulas());
 		suprimentoDto.setVlMaxDiario(tcr.getSuprimento().getVlMaxDiario());
 		suprimentoDto.setVlMaxOperacao(tcr.getSuprimento().getVlMaxOperacao());
-		suprimentoDto.setCdUsuarioAlt(tcr.getSuprimento().getCdUsuarioAlt());
-		suprimentoDto.setDtInclusao(tcr.getSuprimento().getDtInclusao());
-		suprimentoDto.setDtAlteracao(tcr.getSuprimento().getDtAlteracao());
 		return suprimentoDto;
 	}
 }
