@@ -22,19 +22,19 @@ public class TcrServiceImpl implements TcrService {
 	
 	@Override
 	public List<Tcr> buscarPorNomeECooperativa(String nome, Integer cooperativa) {
-		log.info("Buscando lista de Tcrs para nome: " + nome + " cooperativa: " +  cooperativa);
+		log.info("Buscando lista de Tcrs para nome: {}, cooperativa: {}", nome, cooperativa);
 		return tcrRepository.findByDsNomeAndCdCooperativa(nome, cooperativa);
 	}
 
 	@Override
 	public List<Tcr> buscarPorCooperativaEPosto(Integer cooperativa, Integer posto) {
-		log.info("Buscando lista de Tcrs para cooperativa: " + cooperativa + " posto: " + posto);
+		log.info("Buscando lista de Tcrs para cooperativa: {}, posto: {}", cooperativa, posto);
 		return tcrRepository.findByCdCooperativaAndCdPosto(cooperativa, posto);
 	}
 
 	@Override
 	public List<Tcr> buscarPorNomeCooperativaEPosto(String nome, Integer cooperativa, Integer posto) {
-		log.info("Buscando lista de Tcrs para nome: " + nome + " cooperativa: " + cooperativa + " posto: " + posto);
+		log.info("Buscando lista de Tcrs para nome: {}, cooperativa: {}, posto: {}", nome, cooperativa, posto);
 		return tcrRepository.findByDsNomeAndCdCooperativaAndCdPosto(nome, cooperativa, posto);
 	}
 
