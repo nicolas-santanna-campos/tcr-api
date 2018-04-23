@@ -22,15 +22,12 @@ import javax.validation.constraints.Size;
 @Table(name = "retirada")
 public class Retirada implements Serializable {
 	
-	private static final long serialVersionUID = -8256001564608371061L;
+	private static final long serialVersionUID = -5251290989216390879L;
 	
 	private Long 		id;
 	private String	 	idAtivo;
 	private BigDecimal  vlMaxDiario;
 	private BigDecimal  vlMaxOperacao;
-	private String 		cdUsuarioAlt;
-	private Date 		dtInclusao;
-	private Date 		dtAlteracao;
 	
 	public Retirada() {
 		
@@ -83,53 +80,10 @@ public class Retirada implements Serializable {
 	public void setVlMaxOperacao(BigDecimal vlMaxOperacao) {
 		this.vlMaxOperacao = vlMaxOperacao;
 	}
-	
-	@Column(name = "cd_usuario_alt", nullable = false)
-	@Size(min = 3, max = 10, message = "O nome do usuário deve conter entre 3 e 10 caracteres.")
-	public String getCdUsuarioAlt() {
-		return cdUsuarioAlt;
-	}
-	
-	public void setCdUsuarioAlt(String cdUsuarioAlt) {
-		this.cdUsuarioAlt = cdUsuarioAlt;
-	}
-	
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "dt_inclusao", nullable = false)
-	public Date getDtInclusao() {
-		return dtInclusao;
-	}
-	
-	public void setDtInclusao(Date dtInclusao) {
-		this.dtInclusao = dtInclusao;
-	}
-	
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "dt_alteracao", nullable = false)
-	public Date getDtAlteracao() {
-		return dtAlteracao;
-	}
-	
-	public void setDtAlteracao(Date dtAlteracao) {
-		this.dtAlteracao = dtAlteracao;
-	}
-	
-	@PreUpdate
-	public void preUpdate() { 
-		dtAlteracao = new Date();
-	}
-	
-	@PrePersist
-	public void prePersist() {
-		Date dataAtual = new Date();
-		dtInclusao 	   = dataAtual;
-		dtAlteracao    = dataAtual;
-	}
 
 	@Override
 	public String toString() {
 		return "Retirada [id=" + id + ", idAtivo=" + idAtivo + ", vlMaxDiario=" + vlMaxDiario + ", vlMaxOperacao="
-				+ vlMaxOperacao + ", cdUsuarioAlt=" + cdUsuarioAlt + ", dtInclusao=" + dtInclusao + ", dtAlteracao="
-				+ dtAlteracao + "]";
+				+ vlMaxOperacao + "]";
 	}
 }

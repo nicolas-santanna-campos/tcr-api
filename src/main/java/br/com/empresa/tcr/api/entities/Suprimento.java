@@ -22,7 +22,7 @@ import javax.validation.constraints.Size;
 @Table(name = "suprimento")
 public class Suprimento implements Serializable {
 
-	private static final long serialVersionUID = 5028113051492972542L;
+	private static final long serialVersionUID = 5816997862374373820L;
 	
 	private Long 		id;
 	private String 	idAtivo;
@@ -30,9 +30,6 @@ public class Suprimento implements Serializable {
 	private String   idBalanceamentoCedulas;
 	private BigDecimal	vlMaxDiario;
 	private BigDecimal  vlMaxOperacao;
-	private String 		cdUsuarioAlt;
-	private Date 		dtInclusao;
-	private Date 		dtAlteracao;
 	
 	public Suprimento() {
 		
@@ -102,54 +99,11 @@ public class Suprimento implements Serializable {
 	public void setVlMaxOperacao(BigDecimal vlMaxOperacao) {
 		this.vlMaxOperacao = vlMaxOperacao;
 	}
-	
-	@Column(name = "cd_usuario_alt", nullable = false)
-	@Size(min = 3, max = 10, message = "O nome do usuário deve conter entre 3 e 10 caracteres.")
-	public String getCdUsuarioAlt() {
-		return cdUsuarioAlt;
-	}
-	
-	public void setCdUsuarioAlt(String cdUsuarioAlt) {
-		this.cdUsuarioAlt = cdUsuarioAlt;
-	}
-	
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "dt_inclusao", nullable = false)
-	public Date getDtInclusao() {
-		return dtInclusao;
-	}
-	
-	public void setDtInclusao(Date dtInclusao) {
-		this.dtInclusao = dtInclusao;
-	}
-	
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "dt_alteracao", nullable = false)
-	public Date getDtAlteracao() {
-		return dtAlteracao;
-	}
-	
-	public void setDtAlteracao(Date dtAlteracao) {
-		this.dtAlteracao = dtAlteracao;
-	}
 
-	@PreUpdate
-	public void preUpdate() { 
-		dtAlteracao = new Date();
-	}
-	
-	@PrePersist
-	public void prePersist() {
-		Date dataAtual = new Date();
-		dtInclusao 	   = dataAtual;
-		dtAlteracao    = dataAtual;
-	}
-	
 	@Override
 	public String toString() {
 		return "Suprimento [id=" + id + ", idAtivo=" + idAtivo + ", idExibeInventario=" + idExibeInventario
 				+ ", idBalanceamentoCedulas=" + idBalanceamentoCedulas + ", vlMaxDiario=" + vlMaxDiario
-				+ ", vlMaxOperacao=" + vlMaxOperacao + ", cdUsuarioAlt=" + cdUsuarioAlt + ", dtInclusao=" + dtInclusao
-				+ ", dtAlteracao=" + dtAlteracao + "]";
+				+ ", vlMaxOperacao=" + vlMaxOperacao + "]";
 	}
 }

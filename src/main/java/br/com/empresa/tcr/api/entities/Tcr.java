@@ -31,11 +31,11 @@ public class Tcr implements Serializable {
 	private String 		dsNome;
 	private Integer 	cdPosto;
 	private Integer 	cdCooperativa;
-	private String 	idTesoureiroAtivo;
+	private String 		idTesoureiroAtivo;
 	private String 		cdUsuarioAlt;
 	private Date 		dtInclusao;
 	private Date 		dtAlteracao;
-	private String 	idLimiteExcedidoAutorizaTesoureiro;
+	private String 		idLimiteExcedidoAutorizaTesoureiro;
 	private Suprimento  suprimento;
 	private Retirada 	retirada;
 	private Deposito 	deposito;
