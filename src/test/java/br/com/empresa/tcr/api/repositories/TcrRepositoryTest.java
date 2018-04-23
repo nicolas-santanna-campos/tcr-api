@@ -38,7 +38,7 @@ public class TcrRepositoryTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		this.tcrRepository.save(TcrUtilTest.obterTcr());
+		this.tcrRepository.save(TcrUtilTest.converterTcr());
 	}
 	
 	@After

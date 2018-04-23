@@ -40,7 +40,7 @@ public class TcrServiceTest {
 	@Before
 	public void setUp() throws Exception {
 		List<Tcr> list = new ArrayList<Tcr>();
-		list.add(TcrUtilTest.obterTcr());
+		list.add(TcrUtilTest.converterTcr());
 		
 		BDDMockito.given(this.tcrRepository.findByDsNomeAndCdCooperativa(Mockito.anyString(), Mockito.anyInt())).willReturn(list);
 		BDDMockito.given(this.tcrRepository.findByCdCooperativaAndCdPosto(Mockito.anyInt(), Mockito.anyInt())).willReturn(list);
@@ -71,7 +71,7 @@ public class TcrServiceTest {
 	
 	@Test
 	public void testPersistirTcr() throws Exception {
-		Tcr tcr = this.tcrService.persistir(TcrUtilTest.obterTcr());
+		Tcr tcr = this.tcrService.persistir(TcrUtilTest.converterTcr());
 		
 		assertNotNull(tcr);
 	}

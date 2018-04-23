@@ -22,8 +22,13 @@ public class TcrUtilTest {
 	private static final BigDecimal VALOR_MAX_OPERACAO = new BigDecimal(100);
 	private static final Date 		DATA			   = new Date();
 	
-	
-	public static Tcr obterTcr() throws Exception {
+	/**
+	 * Obtem uma entidade {@link Tcr} para testes.
+	 * 
+	 * @return
+	 * @throws Exception
+	 */
+	public static Tcr converterTcr() throws Exception {
 		Deposito   deposito   = obterDadosDeposito();
 		Retirada   retirada   = obterDadosRetirada();
 		Saque 	   saque 	  = obterDadosSaque();
@@ -43,9 +48,7 @@ public class TcrUtilTest {
 		tcr.setRetirada(retirada);
 		tcr.setSaque(saque);
 		tcr.setSuprimento(suprimento);
-		
 		return tcr;
-		
 	}
 	
 	private static Deposito obterDadosDeposito() throws NoSuchAlgorithmException {
@@ -53,10 +56,6 @@ public class TcrUtilTest {
 		deposito.setIdAtivo(SIM);
 		deposito.setVlMaxDiario(VALOR_MAX_DIARIO);
 		deposito.setVlMaxOperacao(VALOR_MAX_OPERACAO);
-		deposito.setCdUsuarioAlt(USUARIO);
-		deposito.setDtInclusao(DATA);
-		deposito.setDtAlteracao(DATA);
-		
 		return deposito;
 	}
 	
@@ -65,10 +64,6 @@ public class TcrUtilTest {
 		retirada.setIdAtivo(SIM);
 		retirada.setVlMaxDiario(VALOR_MAX_DIARIO);
 		retirada.setVlMaxOperacao(VALOR_MAX_OPERACAO);
-		retirada.setCdUsuarioAlt(USUARIO);
-		retirada.setDtInclusao(DATA);
-		retirada.setDtAlteracao(DATA);
-		
 		return retirada;
 	}
 	
@@ -79,10 +74,6 @@ public class TcrUtilTest {
 		saque.setVlMaxOperacao(VALOR_MAX_OPERACAO);
 		saque.setIdExibeInventario(NAO);
 		saque.setIdBalanceamentoCedulas(NAO);
-		saque.setCdUsuarioAlt(USUARIO);
-		saque.setDtInclusao(DATA);
-		saque.setDtAlteracao(DATA);
-		
 		return saque;
 	}
 	
@@ -93,10 +84,6 @@ public class TcrUtilTest {
 		suprimento.setVlMaxOperacao(VALOR_MAX_OPERACAO);
 		suprimento.setIdExibeInventario(NAO);
 		suprimento.setIdBalanceamentoCedulas(NAO);
-		suprimento.setCdUsuarioAlt(USUARIO);
-		suprimento.setDtInclusao(DATA);
-		suprimento.setDtAlteracao(DATA);
-		
 		return suprimento;
 	}
 }
