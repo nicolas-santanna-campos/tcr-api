@@ -37,8 +37,8 @@ public class TcrUtil {
 		tcr.setDsNome(tcrDto.getDsNome());
 		tcr.setCdPosto(tcrDto.getCdPosto());
 		tcr.setCdCooperativa(tcrDto.getCdCooperativa());
-		tcr.setIdTesoureiroAtivo(tcrDto.getIdTesoureiroAtivo());
-		tcr.setCdUsuarioAlt(tcrDto.getCdUsuarioAlt());
+		tcr.setIdTesoureiroAtivo(tcrDto.getIdTesoureiroAtivo().toUpperCase());
+		tcr.setCdUsuarioAlt(tcrDto.getCdUsuarioAlt().toUpperCase());
 		tcr.setDtInclusao(dataincAlt);
 		tcr.setDtAlteracao(dataincAlt);
 		tcr.setIdLimiteExcedidoAutorizaTesoureiro(tcrDto.getIdLimiteExcedidoAutorizaTesoureiro());
@@ -51,7 +51,7 @@ public class TcrUtil {
 	
 	private static Deposito converterDepositoDtoParaDeposito(TcrDto tcrDto, Date data) throws Exception {
 		Deposito   deposito   = new Deposito();
-		deposito.setIdAtivo(tcrDto.getDepositoDto().getIdAtivo());
+		deposito.setIdAtivo(tcrDto.getDepositoDto().getIdAtivo().toUpperCase());
 		deposito.setVlMaxDiario(tcrDto.getDepositoDto().getVlMaxDiario());
 		deposito.setVlMaxOperacao(tcrDto.getDepositoDto().getVlMaxOperacao());
 		return deposito;
@@ -67,21 +67,21 @@ public class TcrUtil {
 	
 	private static Saque converterSaqueDtoParaSaque(TcrDto tcrDto, Date data) throws Exception  {
 		Saque saque = new Saque();
-		saque.setIdAtivo(tcrDto.getSaqueDto().getIdAtivo());
+		saque.setIdAtivo(tcrDto.getSaqueDto().getIdAtivo().toUpperCase());
 		saque.setVlMaxDiario(tcrDto.getSaqueDto().getVlMaxDiario());
 		saque.setVlMaxOperacao(tcrDto.getSaqueDto().getVlMaxOperacao());
-		saque.setIdExibeInventario(tcrDto.getSaqueDto().getIdExibeInventario());
-		saque.setIdBalanceamentoCedulas(tcrDto.getSaqueDto().getIdBalanceamentoCedulas());
+		saque.setIdExibeInventario(tcrDto.getSaqueDto().getIdExibeInventario().toUpperCase());
+		saque.setIdBalanceamentoCedulas(tcrDto.getSaqueDto().getIdBalanceamentoCedulas().toUpperCase());
 		return saque;
 	}
 	
 	private static Suprimento converterSuprimentoDtoParaSuprimento(TcrDto tcrDto, Date data) throws Exception {
 		Suprimento suprimento = new Suprimento();
-		suprimento.setIdAtivo(tcrDto.getSuprimentoDto().getIdAtivo());
+		suprimento.setIdAtivo(tcrDto.getSuprimentoDto().getIdAtivo().toUpperCase());
 		suprimento.setVlMaxDiario(tcrDto.getSuprimentoDto().getVlMaxDiario());
 		suprimento.setVlMaxOperacao(tcrDto.getSuprimentoDto().getVlMaxOperacao());
-		suprimento.setIdExibeInventario(tcrDto.getSuprimentoDto().getIdExibeInventario());
-		suprimento.setIdBalanceamentoCedulas(tcrDto.getSuprimentoDto().getIdBalanceamentoCedulas());
+		suprimento.setIdExibeInventario(tcrDto.getSuprimentoDto().getIdExibeInventario().toUpperCase());
+		suprimento.setIdBalanceamentoCedulas(tcrDto.getSuprimentoDto().getIdBalanceamentoCedulas().toUpperCase());
 		return suprimento;
 	}
 	
@@ -105,8 +105,8 @@ public class TcrUtil {
 		tcr.setDsNome(cadastroTcrDto.getDsNome());
 		tcr.setCdPosto(cadastroTcrDto.getCdPosto());
 		tcr.setCdCooperativa(cadastroTcrDto.getCdCooperativa());
-		tcr.setIdTesoureiroAtivo(cadastroTcrDto.getIdTesoureiroAtivo());
-		tcr.setCdUsuarioAlt(cadastroTcrDto.getCdUsuarioAlt());
+		tcr.setIdTesoureiroAtivo(cadastroTcrDto.getIdTesoureiroAtivo().toUpperCase());
+		tcr.setCdUsuarioAlt(cadastroTcrDto.getCdUsuarioAlt().toUpperCase());
 		tcr.setDtInclusao(dataincAlt);
 		tcr.setDtAlteracao(dataincAlt);
 		tcr.setIdLimiteExcedidoAutorizaTesoureiro(cadastroTcrDto.getIdLimiteExcedidoAutorizaTesoureiro());
@@ -119,7 +119,7 @@ public class TcrUtil {
 	
 	private static Deposito converterCadastroDepositoDtoParaDeposito(CadastroTcrDto cadastroTcrDto, Date data) throws Exception {
 		Deposito   deposito   = new Deposito();
-		deposito.setIdAtivo(cadastroTcrDto.getCadastroDepositoDto().getIdAtivo());
+		deposito.setIdAtivo(cadastroTcrDto.getCadastroDepositoDto().getIdAtivo().toUpperCase());
 		deposito.setVlMaxDiario(cadastroTcrDto.getCadastroDepositoDto().getVlMaxDiario());
 		deposito.setVlMaxOperacao(cadastroTcrDto.getCadastroDepositoDto().getVlMaxOperacao());
 		return deposito;
@@ -127,7 +127,7 @@ public class TcrUtil {
 	
 	private static Retirada converterCadastroRetiradaDtoParaRetirada(CadastroTcrDto cadastroTcrDto, Date data) throws Exception {
 		Retirada   retirada   = new Retirada();
-		retirada.setIdAtivo(cadastroTcrDto.getCadastroRetiradaDto().getIdAtivo());
+		retirada.setIdAtivo(cadastroTcrDto.getCadastroRetiradaDto().getIdAtivo().toUpperCase());
 		retirada.setVlMaxDiario(cadastroTcrDto.getCadastroRetiradaDto().getVlMaxDiario());
 		retirada.setVlMaxOperacao(cadastroTcrDto.getCadastroRetiradaDto().getVlMaxOperacao());
 		return retirada;
@@ -135,21 +135,21 @@ public class TcrUtil {
 	
 	private static Saque converterCadastroSaqueDtoParaSaque(CadastroTcrDto cadastroTcrDto, Date data) throws Exception  {
 		Saque saque = new Saque();
-		saque.setIdAtivo(cadastroTcrDto.getCadastroSaqueDto().getIdAtivo());
+		saque.setIdAtivo(cadastroTcrDto.getCadastroSaqueDto().getIdAtivo().toUpperCase());
 		saque.setVlMaxDiario(cadastroTcrDto.getCadastroSaqueDto().getVlMaxDiario());
 		saque.setVlMaxOperacao(cadastroTcrDto.getCadastroSaqueDto().getVlMaxOperacao());
-		saque.setIdExibeInventario(cadastroTcrDto.getCadastroSaqueDto().getIdExibeInventario());
+		saque.setIdExibeInventario(cadastroTcrDto.getCadastroSaqueDto().getIdExibeInventario().toUpperCase());
 		saque.setIdBalanceamentoCedulas(cadastroTcrDto.getCadastroSaqueDto().getIdBalanceamentoCedulas());
 		return saque;
 	}
 	
 	private static Suprimento converterCadastroSuprimentoDtoParaSuprimento(CadastroTcrDto cadastroTcrDto, Date data) throws Exception {
 		Suprimento suprimento = new Suprimento();
-		suprimento.setIdAtivo(cadastroTcrDto.getCadastroSuprimentoDto().getIdAtivo());
+		suprimento.setIdAtivo(cadastroTcrDto.getCadastroSuprimentoDto().getIdAtivo().toUpperCase());
 		suprimento.setVlMaxDiario(cadastroTcrDto.getCadastroSuprimentoDto().getVlMaxDiario());
 		suprimento.setVlMaxOperacao(cadastroTcrDto.getCadastroSuprimentoDto().getVlMaxOperacao());
-		suprimento.setIdExibeInventario(cadastroTcrDto.getCadastroSuprimentoDto().getIdExibeInventario());
-		suprimento.setIdBalanceamentoCedulas(cadastroTcrDto.getCadastroSuprimentoDto().getIdBalanceamentoCedulas());
+		suprimento.setIdExibeInventario(cadastroTcrDto.getCadastroSuprimentoDto().getIdExibeInventario().toUpperCase());
+		suprimento.setIdBalanceamentoCedulas(cadastroTcrDto.getCadastroSuprimentoDto().getIdBalanceamentoCedulas().toUpperCase());
 		return suprimento;
 	}
 	
