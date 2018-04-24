@@ -5,6 +5,7 @@ import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -25,7 +26,7 @@ import javax.validation.constraints.Size;
 @Table(name="tcr")
 public class Tcr implements Serializable {
 
-	private static final long serialVersionUID = 3970490788281573344L;
+	private static final long serialVersionUID = -9000600188718728829L;
 	
 	private Long 		id;
 	private String 		dsNome;
@@ -47,7 +48,6 @@ public class Tcr implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
 	public Long getId() {
 		return id;
 	}
@@ -136,8 +136,8 @@ public class Tcr implements Serializable {
 		this.idLimiteExcedidoAutorizaTesoureiro = idLimiteExcedidoAutorizaTesoureiro;
 	}
 	
-	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "id", nullable = false)
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_suprimento", nullable = false)
 	public Suprimento getSuprimento() {
 		return suprimento;
 	}
@@ -146,8 +146,8 @@ public class Tcr implements Serializable {
 		this.suprimento = suprimento;
 	}
 	
-	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "id", nullable = false)
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_retirada", nullable = false)
 	public Retirada getRetirada() {
 		return retirada;
 	}
@@ -156,8 +156,8 @@ public class Tcr implements Serializable {
 		this.retirada = retirada;
 	}
 	
-	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "id", nullable = false)
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_deposito", nullable = false)
 	public Deposito getDeposito() {
 		return deposito;
 	}
@@ -166,8 +166,8 @@ public class Tcr implements Serializable {
 		this.deposito = deposito;
 	}
 	
-	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "id", nullable = false)
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_saque", nullable = false)
 	public Saque getSaque() {
 		return saque;
 	}
