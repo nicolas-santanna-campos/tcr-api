@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -72,6 +73,29 @@ public class TcrController {
 		response.setData(TcrUtil.converterTcrDto(tcr));
 		
 		return ResponseEntity.ok(response);
+	}
+	
+	/**
+	 * Remove um cadastro de TCR por ID
+	 * 
+	 * @param id
+	 * @return ResponseEntity<Response<String>>
+	 */
+	@DeleteMapping(value = "/{id}")
+	public ResponseEntity<Response<String>> remover(@PathVariable("id") Long id) {
+		Response<String> response = new Response<String>();
+		
+		Optional<Tcr> tcr = this.tcrService.buscarPorId(id);
+		
+		if(!tcr.isPresent()) {
+			log.info("Erro ao remover devido ao id: {} ser inválido.", id);
+			response.getErrors().add("Erro ao remover cadastro. Registro não encontrado para o id: " + id);
+			return ResponseEntity.badRequest().body(response);
+		}
+		
+		log.info("Removendo o cadastro com id: {}", id);
+		this.tcrService.remover(id);
+		return ResponseEntity.ok(new Response<String>());
 	}
 
 	/**
@@ -132,7 +156,76 @@ public class TcrController {
 		return ResponseEntity.ok(response);
 	}
 	
-
+	/**
+	 * Busca uma lista de TCRs por cooperativa e posto.
+	 * 
+	 * @param cooperativa
+	 * @param posto
+	 * @return ResponseEntity<Response<List<TcrDto>>>
+	 * @throws Exception
+	 */
+	@GetMapping(value = "/{cdCooperativa}/{cdPosto}")
+	public ResponseEntity<Response<List<TcrDto>>> buscarPorCooperativaEPosto(@PathVariable("cdCooperativa") Integer cooperativa,
+																			 @PathVariable("cdPosto") Integer posto) throws Exception {
+		log.info("Buscando TCR por cooperativa: {}, posto: {}", cooperativa, posto);
+		
+		Response<List<TcrDto>> response = new Response<List<TcrDto>>();
+		List<Tcr> tcrList 		  		= this.tcrService.buscarPorCooperativaEPosto(cooperativa, posto);
+		
+		if(tcrList.isEmpty()) {
+			log.info("Nenhum TCR encontrado para cooperativa: {}, posto: {}", cooperativa, posto);
+			response.getErrors().add("Nenhum TCR encontrado para cooperativa: [" + cooperativa + "] posto: [" + posto + "]");
+			return ResponseEntity.badRequest().body(response);
+		}
+		
+		List<TcrDto> tcrDtoList = new ArrayList<TcrDto>();
+		
+		for(int i = 0; i < tcrList.size(); i++) {
+			Tcr tcr = new Tcr();
+			tcr = tcrList.get(i);
+			tcrDtoList.add(TcrUtil.converterTcrDto(tcr));
+		}
+		
+		response.setData(tcrDtoList);
+		return ResponseEntity.ok(response);
+	}
+	
+	/**
+	 * Busca uma lista de TCRs por nome, cooperativa e posto.
+	 * 
+	 * @param nomeTcr
+	 * @param cooperativa
+	 * @param posto
+	 * @return ResponseEntity<Response<List<TcrDto>>>
+	 * @throws Exception
+	 */
+	@GetMapping(value = "/{dsNome}/{cdCooperativa}/{cdPosto}")
+	public ResponseEntity<Response<List<TcrDto>>> buscarPorNomeCooperativaEPosto(@PathVariable("dsNome") String nome,
+																				 @PathVariable("cdCooperativa") Integer cooperativa,
+																				 @PathVariable("cdPosto") Integer posto) throws Exception {
+		log.info("Buscando TCR por nome: {}, cooperativa: {}, posto: {}", nome, cooperativa, posto);
+		
+		Response<List<TcrDto>> response = new Response<List<TcrDto>>();
+		List<Tcr> tcrList 		  		= this.tcrService.buscarPorNomeCooperativaEPosto(nome, cooperativa, posto);
+		
+		if(tcrList.isEmpty()) {
+			log.info("Nenhum TCR encontrado para nome: {}, cooperativa: {}, posto: {}", nome, cooperativa, posto);
+			response.getErrors().add("Nenhum TCR encontrado para nome: [ "+ nome + "] cooperativa: [" + cooperativa + "] posto: [" + posto + "]");
+			return ResponseEntity.badRequest().body(response);
+		}
+		
+		List<TcrDto> tcrDtoList = new ArrayList<TcrDto>();
+		
+		for(int i = 0; i < tcrList.size(); i++) {
+			Tcr tcr = new Tcr();
+			tcr = tcrList.get(i);
+			tcrDtoList.add(TcrUtil.converterTcrDto(tcr));
+		}
+		
+		response.setData(tcrDtoList);
+		return ResponseEntity.ok(response);
+	}
+	
 	/**
 	 * Verifica se já existe cadastrado um TCR com os mesmos dados.
 	 * 
