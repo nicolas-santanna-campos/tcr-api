@@ -43,7 +43,7 @@ public class TcrController {
 	}
 	
 	/**
-	 * Cadastra um novo TCR
+	 * Cadastra um novo TCR.
 	 * 
 	 * @param tcrDto
 	 * @param result
@@ -74,6 +74,13 @@ public class TcrController {
 		return ResponseEntity.ok(response);
 	}
 
+	/**
+	 * Busca um TCR por id.
+	 * 
+	 * @param id
+	 * @return ResponseEntity<Response<TcrDto>>
+	 * @throws Exception
+	 */
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<Response<TcrDto>> buscarPorId(@PathVariable("id") Long id) throws Exception {
 		log.info("Buscando TCR por ID: {}", id);
@@ -91,9 +98,17 @@ public class TcrController {
 	    return ResponseEntity.ok(response);
 	}
 	
+	/**
+	 * Busca uma lista de TCRs por nome e cooperativa.
+	 * 
+	 * @param nome
+	 * @param cooperativa
+	 * @return ResponseEntity<Response<List<TcrDto>>>
+	 * @throws Exception
+	 */
 	@GetMapping(value = "/{dsNome}/{cdCooperativa}")
 	public ResponseEntity<Response<List<TcrDto>>> buscarPorNomeECooperativa(@PathVariable("dsNome") String nome,
-																			@PathVariable("CdCooperativa") Integer cooperativa) throws Exception {
+																			@PathVariable("cdCooperativa") Integer cooperativa) throws Exception {
 		log.info("Buscando TCR por nome: {}, cooperativa: {}", nome, cooperativa);
 		
 		Response<List<TcrDto>> response = new Response<List<TcrDto>>();
